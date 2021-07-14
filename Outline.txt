@@ -1,0 +1,54 @@
+K88 Outline Document
+
+=== GENERAL OVERVIEW ===
+    - 8-bit processor
+    - 16-bit addressing space, mem locations stored as two bytes (0000 -> FFFF)
+    - 4 8-bit Registers (3 Data), 16 bit Program Counter + Address Register, and 4 bit Flags register
+    - Little endian (Low order byte first, 0xFF00 = 0x00 0xFF)
+
+=== INSTRUCTION SET ===
+
+     HEX |  NAME  | DESCRIPTION                                                    | EXAMPLE
+    ----------------------------------------------------------------------------------------------------------
+    0x00 |  ADD   | ADD the value two registers and save to accumulator.           | ACC = REG1 + REG2
+    0x01 |  SUB   | SUBTRACT the value a register with another register.           | ACC = ACC - MEM                         
+    0x02 |  AND   | AND a value with the accumulator and set flags accordingly.    | FGS = ACC & MEM
+    0x03 |  OR    | OR a value and the accumulator and set flags accordingly .     | FGS = ACC | REG2
+    0x04 |  CMP   | Compare a register with a value in mem and set flags.          | FGS = MEM CMP REG
+    0x05 |  PSH   | Pushes value of a register onto the top of the stack.          | SP  = ACC -> SP--
+    0x06 |  POP   | Pops value off the stack and stores it in the accumulator.     | ACC = MEM[SP] -> SP++
+    0x07 |  MOV   | Move instruction, copies from one register to another.         | REG1 = REG2
+    0x08 |  LD    | Load instruction, loads value from memory into a register.     | REG = MEM
+    0x09 |  STO   | Store instruction, copies value from register to memory.       | MEM = REG
+    0x0A |  JMP   | Unconditional Jump, jumps to given memory address.             | PC  = ADR
+    0x0B |  JZ    | Jump if zero, jumps to an address if the Z flag is set high.   | PC  = FGS ? Z
+    0x0C |  JE    | Jump if equal, jumps to an address if the E flag is set high.  | PC  = FGS ? E
+    0x0D |  JC    | Jump if carry, jumps to an address if the C flag is set high.  | PC  = FGS ? C
+    0x0E |  JSR   | Jumps to subroutine, and writes return location in the stack.  | PC  = SRT
+    0x0F |  RTS   | Return from subroutine, jumps to address of last JSR.          | PC  = JSR 
+    0x10 |  NOP   | No operation instruction, basically wastes a clock cycle.      | NO OPERATION
+    0x11 |  RST   | Jumps to FFFA and performs reset sequence.                     | PC  = 0xFFFA
+    0x12 |  HLT   | Halts the cpu and stops the clock.                             | STOP CLOCK
+
+=== REGISTERS ===
+
+    HEX REP      |  FULL NAME         | DESCRIPTION
+    -------------------------------------------------------------------------------------------------------
+    SP   0x00    |  STACK POINTER     |  8-bit register and stores low-byte of locations on the stack.
+    PC   0x01    |  PROGRAM COUNTER   |  16-bit register which points to the next instruction to be executed.
+    IDX  0x02    |  DATA REGISTER X   |  8-bit general purpose register, can hold any 8 bit integer value from 0-255.
+    IDY  0x03    |  DATA REGISTER Y   |  8-bit general purpose register, identical to the A register.
+    ACC  0x04    |  ACCUMULATOR       |  8-bit register that holds data from all arithmetic/logical operations.
+    FGS  5->8    |  FLAGS REGISTER    |  4-bit register that holds the state of the various processor flags.
+
+=== FLAGS ===
+    Z 0x05  | Zero flag, is set high if last instruction resulted in a zero.
+    E 0x06  | Equals flag, is set high if comparison was equal.
+    C 0x07  | Carry flag, is set high if comparison was greater, or if arithmetic operation resulted in overflow.
+    V 0x08  | Overflow/Underflow flag, is set high if arithmetic operation violated Two's Complement.
+
+=== MEMORY ADDRESSING ===
+    0x0000 -> 0x00FF is reserved for the stack.
+    0x0100 -> 0x203F is reserved for genral-purpose Random Access Memory (8k RAM)
+    0x2040 -> 0xFFE9 is reserved for Read-Only memory (56k ROM).
+    0xFFEC -> 0xFFFF is protected memory and stores the reset sequence.

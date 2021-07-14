@@ -33,7 +33,6 @@ int main() {
     similar to variable declarations. These are from where the load command can read from
     */
     memory[0x8100] = 0x01;
-    memory[0x8101] = 0x00;
 
     // Boot sequence
     memory[0xFFEC] = JMP;

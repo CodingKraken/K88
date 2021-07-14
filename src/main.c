@@ -4,7 +4,7 @@
     The idea for this project takes significant inspiration from JDH's JDH-8, 
     along with Ben Eater's 8 bit computer series.
 
-    The goals are to create a fully turing complete cpu processor, with a relatively simple yet 
+    The goals are to create a fully turing complete 8 bit processor, with a relatively simple yet 
     readable instruction set and assembly language, and an end goal of emulating a processor fairly close to a physical
     implementation.
 

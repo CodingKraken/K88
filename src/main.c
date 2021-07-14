@@ -53,7 +53,6 @@ int main() {
     memory[0x8007] = HLT;
 
     // Fibloop Label
-    
     memory[0x8008] = LD;
     memory[0x8009] = 0x01;
     memory[0x800A] = 0x81;

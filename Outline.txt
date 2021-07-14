@@ -14,7 +14,7 @@ K88 Outline Document
     0x01 |  SUB   | SUBTRACT the value a register with another register.           | ACC = ACC - MEM                         
     0x02 |  AND   | AND a value with the accumulator and set flags accordingly.    | FGS = ACC & MEM
     0x03 |  OR    | OR a value and the accumulator and set flags accordingly .     | FGS = ACC | REG2
-    0x04 |  CMP   | Compare a register with a value in mem and set flags.          | FGS = MEM CMP REG
+    0x04 |  CMP   | Compare a register with a value and set flags accirdubgly.     | FGS = REG CMP VAL
     0x05 |  PSH   | Pushes value of a register onto the top of the stack.          | SP  = ACC -> SP--
     0x06 |  POP   | Pops value off the stack and stores it in the accumulator.     | ACC = MEM[SP] -> SP++
     0x07 |  MOV   | Move instruction, copies from one register to another.         | REG1 = REG2

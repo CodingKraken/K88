@@ -1,5 +1,5 @@
 This is the assembly language version of the fibonacci program in main, with
-addresses removed to clarity
+addresses removed for clarity
 
 start:
     ld 1, idy

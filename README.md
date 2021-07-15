@@ -1,6 +1,6 @@
 # K88 8-bit Processor
 
-The K88 processor is intended to be a relatively realistic 8 bit computer processor, with 64 kilobytes of addressing space and
+The K88 processor is intended to be a relatively realistic 8 bit computer processor, with 64kilobytes of addressing space and
 3 8 bit data registers. The processor includes 19 instructions which make for a fully turing complete processor architecture.
 
 This project is still a work in progressm so changes to the various files will be frequent.

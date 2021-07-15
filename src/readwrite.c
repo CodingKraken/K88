@@ -5,15 +5,15 @@
 #include "funcs.h"
 
 /*
-The three read functions simply copy the data from either memory (ReadByte), the address of 
-the program counter (ReadAddress), or the data registers (ReadRegister)
+    The three read functions simply copy the data from either memory (ReadByte), the address of 
+    the program counter (ReadAddress), or the data registers (ReadRegister)
 */
 
 void ReadByte(struct CPU* cpu, uint8_t memory[0x10000], int location) {
     /*
-    0 indicates a read from the program counter
-    1 indicates a read from the stack 
-    2 indicates a read from the address register
+        0 indicates a read from the program counter
+        1 indicates a read from the stack 
+        2 indicates a read from the address register
     */
     
     if(location == 1) {
@@ -69,10 +69,10 @@ void ReadRegister(struct CPU* cpu, uint8_t Register) {
 }
 
 /*
-Similarly to the read functions, the load functions load data from a destination to a source, given the
-buffer register and a target. LoadByte sets the value at a memory address equal to the buffer register,
-LoadAddress sets the low and high bytes of the address register based on the buffer register, and
-load register copies the data in the buffer register into one of the three data register
+    Similarly to the read functions, the load functions load data from a destination to a source, given the
+    buffer register and a target. LoadByte sets the value at a memory address equal to the buffer register,
+    LoadAddress sets the low and high bytes of the address register based on the buffer register, and
+    load register copies the data in the buffer register into one of the three data register
 */
 
 void LoadByte(struct CPU* cpu, uint8_t memory[0x10000], uint16_t dest) {

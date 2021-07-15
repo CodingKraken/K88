@@ -27,7 +27,7 @@ K88 Outline Document
     0x0E |  JSR   | Jumps to subroutine, and writes return location in the stack.  | PC  = SRT
     0x0F |  RTS   | Return from subroutine, jumps to address of last JSR.          | PC  = JSR 
     0x10 |  NOP   | No operation instruction, basically wastes a clock cycle.      | NO OPERATION
-    0x11 |  RST   | Jumps to FFFA and performs reset sequence.                     | PC  = 0xFFFA
+    0x11 |  RST   | Jumps to FFFA and performs reset sequence.                     | PC  = 0xFFEC
     0x12 |  HLT   | Halts the cpu and stops the clock.                             | STOP CLOCK
 
 === REGISTERS ===

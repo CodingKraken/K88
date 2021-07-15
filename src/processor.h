@@ -40,13 +40,13 @@ enum Register {
 struct CPU {
 
     /*
-    The CPU has five primary registers for reading instructions, 2 16-bit address registers, and 3 8-bit registers
-    
-    The Program Counter stores the current location of memory being read
-    The Address Register copies the location of the program counter prior to execution of an instruction
-    The Stack Pointer points to the last location where data was written to the stack.
-    The Buffer Register stores the value of the memory address being read
-    The Instruction Register stores the opcode of the current instruction being executed.
+        The CPU has five primary registers for reading instructions, 2 16-bit address registers, and 3 8-bit registers
+        
+        The Program Counter stores the current location of memory being read
+        The Address Register copies the location of the program counter prior to execution of an instruction
+        The Stack Pointer points to the last location where data was written to the stack.
+        The Buffer Register stores the value of the memory address being read
+        The Instruction Register stores the opcode of the current instruction being executed.
     */
 
     uint16_t  PC, AR;
@@ -61,12 +61,12 @@ struct CPU {
     uint8_t   ACC;
 
     /*
-    The four flags in the 4bit flags register are split up into one bit bitfields. The Flags store the status of the processor
-    
-    Z: The Z flag or Zero Flag indicates whether or not an arithmetic or comparison operation resulted in a zero
-    E: The E flag or Equals Flag indicates whether or not a comparison operation resulted in equality
-    C: The C flag or Carry Flag indicates whether or not an arithmetic or comparison operation resulted in a Carry (such as overflow)
-    V: The V flag or Overflow Flag indicates whether or not an arithmetic operation violated two's complement
+        The four flags in the 4bit flags register are split up into one bit bitfields. The Flags store the status of the processor
+        
+        Z: The Z flag or Zero Flag indicates whether or not an arithmetic or comparison operation resulted in a zero
+        E: The E flag or Equals Flag indicates whether or not a comparison operation resulted in equality
+        C: The C flag or Carry Flag indicates whether or not an arithmetic or comparison operation resulted in a Carry (such as overflow)
+        V: The V flag or Overflow Flag indicates whether or not an arithmetic operation violated two's complement
     */
 
     uint8_t Z : 1;

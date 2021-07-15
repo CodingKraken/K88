@@ -29,8 +29,8 @@ int main() {
     ProcessorInit(&cpu, memory);
 
     /* 
-    These memory locations have had specific values initialized to them, 
-    similar to variable declarations. These are from where the load command can read from
+        These memory locations have had specific values initialized to them, 
+        similar to variable declarations. These are from where the load command can read from
     */
     memory[0x8100] = 0x01;
 

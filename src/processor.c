@@ -64,9 +64,9 @@ void ALU(struct CPU* cpu, int op) {
 void ExecuteInstruction(struct CPU* cpu, uint8_t memory[0x10000]) {
     
     /*
-    The Execution of an Instruction is split into two stages, those being:
-    Fetch: The Instruction to be executed is read from the address pointed to by the PC and is loaded into the 
-    Buffer Register for storage, and then passes that on to the instruction register where it is saved
+        The Execution of an Instruction is split into two stages, those being:
+        Fetch: The Instruction to be executed is read from the address pointed to by the PC and is loaded into the 
+        Buffer Register for storage, and then passes that on to the instruction register where it is saved
     */
     
     // Fetch Stage 1) The Address register stores the location of the pc prior to reading the instruction
@@ -128,11 +128,11 @@ void ExecuteInstruction(struct CPU* cpu, uint8_t memory[0x10000]) {
             break;
         }
         /*
-        The comparison operation compares the value in a register with a value in memory
-        The result of the comparison sets the cpu flags, based on this table:
-        A < B: Z = 1; E = 0; C = 0;
-        A = B: Z = 0; E = 1; C = 0;
-        A > B: Z = 0; E = 0; C = 1;
+            The comparison operation compares the value in a register with a value in memory
+            The result of the comparison sets the cpu flags, based on this table:
+            A < B: Z = 1; E = 0; C = 0;
+            A = B: Z = 0; E = 1; C = 0;
+            A > B: Z = 0; E = 0; C = 1;
         */
         case CMP: {
             PointerStep(cpu, PC, 1, 1);
@@ -145,10 +145,10 @@ void ExecuteInstruction(struct CPU* cpu, uint8_t memory[0x10000]) {
             break;
         }
         /*
-        The next two instructions, psh (push) and pop load and retrieve data from the stack
-        Push copies the data in a register  and stores it at the current location pointed to by the stack, 
-        and decrementing the stack pointer
-        Pop reads the data stored at the stack pointer and copies it into the accumulator, incrementing the SP.
+            The next two instructions, psh (push) and pop load and retrieve data from the stack
+            Push copies the data in a register  and stores it at the current location pointed to by the stack, 
+            and decrementing the stack pointer
+            Pop reads the data stored at the stack pointer and copies it into the accumulator, incrementing the SP.
         */
         case PSH: {
             PointerStep(cpu, PC, 1, 1);
@@ -167,10 +167,10 @@ void ExecuteInstruction(struct CPU* cpu, uint8_t memory[0x10000]) {
             break;
         }
         /*
-        The three memory operations, MOV (Move), LD (Load), and STO (Store), allow for basic memory manipulation
-        MOV copies data from one register to another
-        LD takes a value from memory and stores it in a register
-        STO is the inverse of LD, taking the value of a register and storing it in memory
+            The three memory operations, MOV (Move), LD (Load), and STO (Store), allow for basic memory manipulation
+            MOV copies data from one register to another
+            LD takes a value from memory and stores it in a register
+            STO is the inverse of LD, taking the value of a register and storing it in memory
         */
         case MOV: {
             PointerStep(cpu, PC, 1, 1);
@@ -206,9 +206,9 @@ void ExecuteInstruction(struct CPU* cpu, uint8_t memory[0x10000]) {
             break;
         }
         /*
-        The next four instructions are the Jump instructions, one unconditional and three conditional ones
-        JMP is completely unconditional, it simply takes a memory address and sets the program counter to that address
-        JZ, JE, and JC Jump if their respective flags (Z, E, and C) are set high. If not they do not jump
+            The next four instructions are the Jump instructions, one unconditional and three conditional ones
+            JMP is completely unconditional, it simply takes a memory address and sets the program counter to that address
+            JZ, JE, and JC Jump if their respective flags (Z, E, and C) are set high. If not they do not jump
         */
         case JMP: {
             PointerStep(cpu, PC, 1, 1);
@@ -257,11 +257,11 @@ void ExecuteInstruction(struct CPU* cpu, uint8_t memory[0x10000]) {
             break;
         }
         /*
-        Below are the subroutine instructions, which allow for function (in this case subroutine) calls
-        JSR or Jump to Subroutine Jumps to a subroutine and writes the a return address to the stack, which is
-        simply the current address of the program counter prior to the jump
-        RTS or Return from Subroutine reads the written address written in the stack and sets the program counter
-        accordingly
+            Below are the subroutine instructions, which allow for function (in this case subroutine) calls
+            JSR or Jump to Subroutine Jumps to a subroutine and writes the a return address to the stack, which is
+            simply the current address of the program counter prior to the jump
+            RTS or Return from Subroutine reads the written address written in the stack and sets the program counter
+            accordingly
         */
         case JSR: {
             PointerStep(cpu, PC, 1, 1);
@@ -290,10 +290,10 @@ void ExecuteInstruction(struct CPU* cpu, uint8_t memory[0x10000]) {
             break;
         }
         /*
-        Below are the final main processor instructions. These are incredibly simple and don't do much of anything
-        NOP or No Operation just wastes a clock cycle, and does not affect any register or memory address
-        RST or Reset sets the program counter to the reset vector, effectively resetting the processor
-        HLT or Halt completely stops the CPU and ends program
+            Below are the final main processor instructions. These are incredibly simple and don't do much of anything
+            NOP or No Operation just wastes a clock cycle, and does not affect any register or memory address
+            RST or Reset sets the program counter to the reset vector, effectively resetting the processor
+            HLT or Halt completely stops the CPU and ends program
         */
         case NOP: {
             break;

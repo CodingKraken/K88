@@ -45,6 +45,7 @@ void ExecuteInstruction(struct CPU* cpu, uint8_t memory[0x10000]) {
         The Execution of an Instruction is split into two stages, those being:
         Fetch: The Instruction to be executed is read from the address pointed to by the PC and is loaded into the 
         Buffer Register for storage, and then passes that on to the instruction register where it is saved
+        Execute: The CPU executes the instruction after reading it.
     */
     
     // Fetch Stage 1) The Address register stores the location of the pc prior to reading the instruction

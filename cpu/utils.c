@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "cpu.h"
 
 char* InsAsString(struct CPU* cpu) {

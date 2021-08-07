@@ -54,7 +54,7 @@ Instruction formatting:
     IDX  0x0    |  DATA REGISTER X   |  8-bit general purpose register, can hold any 8 bit integer value from 0-255.
     IDY  0x1    |  DATA REGISTER Y   |  8-bit general purpose register, identical to the X register.
     IDZ  0x2    |  DATA REGISTER Z   |  8-bit general purpose register, identical to both the X and Y registers.
-    FGS  3->8   |  FLAGS REGISTER    |  8-bit register that holds the state of the cpu and the various flags.
+    FGS  3->7   |  FLAGS REGISTER    |  8-bit register that holds the state of the cpu and the various flags.
 
 === FLAGS ===
     Z 0x3  | Zero flag, is set high if last instruction resulted in a zero.

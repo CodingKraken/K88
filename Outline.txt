@@ -67,7 +67,6 @@ Instruction formatting:
 === INTERNAL REGISTERS ===
 
     PROGRAM COUNTER         |  16-bit register which points to the location in memory being read from
-    ADDRESS REGISTER        |  16-bit register which is used to hold memory addresses being accessed by instructions
     STACK POITNER           |  8-bit register which points to the last location accessed in the stack
     INSTRUCTION REGISTER    |  8-bit register which holds the opcode of the current instruction being processed
 

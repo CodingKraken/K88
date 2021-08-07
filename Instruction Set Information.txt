@@ -1,0 +1,134 @@
+ADD: Takes in a register and either a memory address or another register, and adds the two.
+
+ADD opcodes with address mode:  0x00 -> 0x02
+ADD opcodes with register mode: 0x08 -> 0x0A
+
+Flags affected: Z, C, V
+
+------------------------------------------------------------------------------------------------
+
+SUB: Takes in a register and either a memory address or another register, and adds the two.
+
+SUB opcodes with address mode:  0x10 -> 0x12
+SUB opcodes with register mode: 0x18 -> 0x1A
+
+Flags affected: Z, V
+
+------------------------------------------------------------------------------------------------
+
+AND: Performs bitwise AND operation, bit by bit, on a register with a memory address or other register.
+
+AND opcodes with address mode:  0x20 -> 0x22
+AND opcodes with register mode: 0x28 -> 0x2A
+
+Flags affected: None
+
+------------------------------------------------------------------------------------------------
+
+OR: Performs bitwise OR operation, bit by bit, on a register with a memory address or other register.
+
+OR opcodes with address mode:  0x30 -> 0x32
+OR opcodes with register mode: 0x38 -> 0x3A
+
+Flags affected: None
+
+------------------------------------------------------------------------------------------------
+
+NOR: Performs bitwise NOR operation, bit by bit, on a register with a memory address or other register.
+
+NOR opcodes with address mode:  0x40 -> 0x42
+NOR opcodes with register mode: 0x48 -> 0x4A
+
+Flags affected: None
+
+------------------------------------------------------------------------------------------------
+
+CLF: Clear Flag instruction, resets bit in flag to zero.
+
+CLF Opcodes: 0x53 -> 0x57
+
+Flags affected: Z, E, C, V
+
+------------------------------------------------------------------------------------------------
+
+CMP: Compare a register with a memory address or register and set flags accordingly
+
+CMP opcodes with address mode:  0x60 -> 0x66
+CMP opcodes with register mode: 0x68 -> 0x6E
+
+Flags affected: Z, E, C, V
+
+------------------------------------------------------------------------------------------------
+
+PSH: Push the contents of a memory address or register to the stack.
+
+PSH opcodes: 0x70 (address), 0x78 (register)
+
+Flags affected: None
+
+------------------------------------------------------------------------------------------------
+
+POP: Returns data off the top of the stack and decriments stack pointer.
+
+POP opcodes: 0x88 -> 8A (register only)
+
+Flags affected: None
+
+------------------------------------------------------------------------------------------------
+
+MOV: Moves data from a register or address to another register
+
+MOV opcodes with address mode:  0x90 -> 0x92
+MOV opcodes with register mode: 0x98 -> 0x9A
+
+Flags affected: None
+
+------------------------------------------------------------------------------------------------
+
+STO: Store instruction, stores value from register to memory
+
+STO opcodes: 0xA0 -> 0xA2 (address only)
+
+Flags affected: None
+
+------------------------------------------------------------------------------------------------
+
+JMP: Unconditional Jump to memory address
+
+JMP opcode: 0xB0 (address only)
+
+Flags affected: None
+
+------------------------------------------------------------------------------------------------
+
+JFS: Jump if flag set, jumps to a memory address if a flag is set
+
+JFS opcodes: 0xC3 -> 0xC6 (address only)
+
+Flags affected: None
+
+------------------------------------------------------------------------------------------------
+
+JSR: Jump to subroutine, jumps to a memory address and writes a return location to the stack
+
+JSR opcode: 0xD0 (address only)
+
+Flags affected: None
+
+------------------------------------------------------------------------------------------------
+
+RTS: Return from Subroutine, reads return address from the stack and jumps to it.
+
+RTS opcode: E0 (address only)
+
+Flags affected: None
+
+------------------------------------------------------------------------------------------------
+
+NOP: NOP or No operation simply wastes two clock cycles. One mode however does halt the cpu
+
+NOP opcodes: F0 (address only), FF (Halt)
+
+Flags affected: H
+
+------------------------------------------------------------------------------------------------

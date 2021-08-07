@@ -62,7 +62,7 @@ Instruction formatting:
     C 0x5  | Carry flag, is set high if comparison was greater, or if arithmetic operation resulted in overflow.
     V 0x6  | Overflow/Underflow flag, is set high if arithmetic operation violated Two's Complement.
 
-    H 0x07  | Halt flag, if set high the cpu halts, if set low again the cpu continues from where it left off.
+    H 0x7  | Halt flag, if set high the cpu halts, if set low again the cpu continues from where it left off.
     
 === INTERNAL REGISTERS ===
 

@@ -6,4 +6,4 @@ The K88 (Kraken 88, inspired by the intel 8088) is intended to be a relatively r
 This project is still a work in progress so changes to the various files will be frequent.
 
 For specifics on the instruction set, memory allocation and other details, see Outline.
-The processor is preprogrammed with a fibonacci sequence calculator. An assembly version of this program can be found in fibonacci.ksm
+The processor is preprogrammed with a fibonacci sequence calculator. An assembly version of this program can be found in fibonacci.asm

@@ -139,18 +139,9 @@ void ExecuteInstruction(struct CPU* cpu, uint8_t memory[0x10000]) {
             break;
         }
         case PSH: {
+            if(instruction.mode == 0) { val = ReadAddress(cpu, memory); }
             cpu->SP--;
-            switch(instruction.reg) {
-                case IDX:
-                    memory[cpu->SP] = cpu->IDX;
-                    break;
-                case IDY:
-                    memory[cpu->SP] = cpu->IDY;
-                    break;
-                case IDZ:
-                    memory[cpu->SP] = cpu->IDZ;
-                    break;
-            }
+            memory[cpu->SP] = val;
             break;
         }
         case POP: {

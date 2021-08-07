@@ -8,24 +8,24 @@ K88 Outline Document
 
 === INSTRUCTION SET ===
 
-    HEX    |  NAME  | DESCRIPTION                                                    | EXAMPLE
+    HEX   |  NAME  | DESCRIPTION                                                    | EXAMPLE
     ----------------------------------------------------------------------------------------------------------
-    0x00   |  ADD   | ADD an register/address to another register.                   | REG = REG + REG/MEM
-    0x10   |  SUB   | SUBTRACT a register/address with another register.             | REG = REG - REG/MEM
-    0x20   |  AND   | AND a register/address with a register.                        | REG = REG & REG/MEM
-    0x30   |  OR    | OR a register/address with a register.                         | REG = REG | REG/MEM
-    0x40   |  NOR   | NOR a register/address with a register.                        | REG = ~(REG | REG/MEM)
-    0x50   |  CLF   | Clear flag instruction, clears a value stored in a flag.       | FGR = 0 
-    0x60   |  CMP   | Compare a register with a value and set flags accordingly.     | FGS = REG CMP VAL
-    0x70   |  PSH   | Pushes a register/address value onto the top of the stack.     | SP  = REG/MEM -> SP--
-    0x80   |  POP   | Pops value off the stack and stores it in a register.          | REG = MEM[SP] -> SP++
-    0x90   |  MOV   | Move instruction, moves data from mem/register to a register.  | REG = REG/MEM
-    0xA0   |  STO   | Store instruction, stores value from register in memory.       | MEM = REG
-    0xB0   |  JMP   | Unconditional Jump, jumps to given memory address.             | PC  = ADR
-    0xC0   |  JFS   | Jump if flag set, jumps to an address if a flag is set.        | PC  = FLG ? 1
-    0xD0   |  JSR   | Jumps to subroutine, and writes return location in the stack.  | PC  = SBR
-    0xE0   |  RTS   | Return from subroutine, jumps to address of last JSR.          | PC  = JSR 
-    0xF0   |  NOP   | No operation instruction, basically wastes a clock cycle.      | NO OPERATION
+    0x0   |  ADD   | ADD an register/address to another register.                   | REG = REG + REG/MEM
+    0x1   |  SUB   | SUBTRACT a register/address with another register.             | REG = REG - REG/MEM
+    0x2   |  AND   | AND a register/address with a register.                        | REG = REG & REG/MEM
+    0x3   |  OR    | OR a register/address with a register.                         | REG = REG | REG/MEM
+    0x4   |  NOR   | NOR a register/address with a register.                        | REG = ~(REG | REG/MEM)
+    0x5   |  CLF   | Clear flag instruction, clears a value stored in a flag.       | FGR = 0 
+    0x6   |  CMP   | Compare a register with a value and set flags accordingly.     | FGS = REG CMP VAL
+    0x7   |  PSH   | Pushes a register/address value onto the top of the stack.     | SP  = REG/MEM -> SP--
+    0x8   |  POP   | Pops value off the stack and stores it in a register.          | REG = MEM[SP] -> SP++
+    0x9   |  MOV   | Move instruction, moves data from mem/register to a register.  | REG = REG/MEM
+    0xA   |  STO   | Store instruction, stores value from register in memory.       | MEM = REG
+    0xB   |  JMP   | Unconditional Jump, jumps to given memory address.             | PC  = ADR
+    0xC   |  JFS   | Jump if flag set, jumps to an address if a flag is set.        | PC  = FLG ? 1
+    0xD   |  JSR   | Jumps to subroutine, and writes return location in the stack.  | PC  = SBR
+    0xE   |  RTS   | Return from subroutine, jumps to address of last JSR.          | PC  = JSR 
+    0xF   |  NOP   | No operation instruction, basically wastes a clock cycle.      | NO OPERATION
 
 Instruction formatting:
     AAAA B CCC

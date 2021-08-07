@@ -10,22 +10,22 @@ K88 Outline Document
 
     HEX    |  NAME  | DESCRIPTION                                                    | EXAMPLE
     ----------------------------------------------------------------------------------------------------------
-    0x00   |  ADD   | ADD an register/address to another register.                   | REG = REG + REG/MEM
-    0x01   |  SUB   | SUBTRACT a register/address with another register.             | REG = REG - REG/MEM
-    0x02   |  AND   | AND a register/address with a register.                        | REG = REG & REG/MEM
-    0x03   |  OR    | OR a register/address with a register.                         | REG = REG | REG/MEM
-    0x04   |  NOR   | NOR a register/address with a register.                        | REG = ~(REG | REG/MEM)
-    0x05   |  CLF   | Clear flag instruction, clears a value stored in a flag.       | FGR = 0 
-    0x06   |  CMP   | Compare a register with a value and set flags accordingly.     | FGS = REG CMP VAL
-    0x07   |  PSH   | Pushes a register/address value onto the top of the stack.     | SP  = REG/MEM -> SP--
-    0x08   |  POP   | Pops value off the stack and stores it in a register.          | REG = MEM[SP] -> SP++
-    0x09   |  MOV   | Move instruction, moves data from mem/register to a register.  | REG = REG/MEM
-    0x0A   |  STO   | Store instruction, stores value from register in memory.       | MEM = REG
-    0x0B   |  JMP   | Unconditional Jump, jumps to given memory address.             | PC  = ADR
-    0x0C   |  JFS   | Jump if flag set, jumps to an address if a flag is set.        | PC  = FLG ? 1
-    0x0D   |  JSR   | Jumps to subroutine, and writes return location in the stack.  | PC  = SBR
-    0x0E   |  RTS   | Return from subroutine, jumps to address of last JSR.          | PC  = JSR 
-    0x0F   |  NOP   | No operation instruction, basically wastes a clock cycle.      | NO OPERATION
+    0x0   |  ADD   | ADD an register/address to another register.                   | REG = REG + REG/MEM
+    0x1   |  SUB   | SUBTRACT a register/address with another register.             | REG = REG - REG/MEM
+    0x2   |  AND   | AND a register/address with a register.                        | REG = REG & REG/MEM
+    0x3   |  OR    | OR a register/address with a register.                         | REG = REG | REG/MEM
+    0x4   |  NOR   | NOR a register/address with a register.                        | REG = ~(REG | REG/MEM)
+    0x5   |  CLF   | Clear flag instruction, clears a value stored in a flag.       | FGR = 0 
+    0x6   |  CMP   | Compare a register with a value and set flags accordingly.     | FGS = REG CMP VAL
+    0x7   |  PSH   | Pushes a register/address value onto the top of the stack.     | SP  = REG/MEM -> SP--
+    0x8   |  POP   | Pops value off the stack and stores it in a register.          | REG = MEM[SP] -> SP++
+    0x9   |  MOV   | Move instruction, moves data from mem/register to a register.  | REG = REG/MEM
+    0xA   |  STO   | Store instruction, stores value from register in memory.       | MEM = REG
+    0xB   |  JMP   | Unconditional Jump, jumps to given memory address.             | PC  = ADR
+    0xC   |  JFS   | Jump if flag set, jumps to an address if a flag is set.        | PC  = FLG ? 1
+    0xD   |  JSR   | Jumps to subroutine, and writes return location in the stack.  | PC  = SBR
+    0xE   |  RTS   | Return from subroutine, jumps to address of last JSR.          | PC  = JSR 
+    0xF   |  NOP   | No operation instruction, basically wastes a clock cycle.      | NO OPERATION
 
 Instruction formatting:
     AAAA B CCC
@@ -51,27 +51,25 @@ Instruction formatting:
 
     HEX REP      |  FULL NAME         | DESCRIPTION
     -------------------------------------------------------------------------------------------------------
-    IDX  0x00    |  DATA REGISTER X   |  8-bit general purpose register, can hold any 8 bit integer value from 0-255.
-    IDY  0x01    |  DATA REGISTER Y   |  8-bit general purpose register, identical to the X register.
-    IDZ  0x02    |  DATA REGISTER Z   |  8-bit general purpose register, identical to both the X and Y registers.
-    FGS  3->8    |  FLAGS REGISTER    |  8-bit register that holds the state of the cpu and the various flags.
+    IDX  0x0    |  DATA REGISTER X   |  8-bit general purpose register, can hold any 8 bit integer value from 0-255.
+    IDY  0x1    |  DATA REGISTER Y   |  8-bit general purpose register, identical to the X register.
+    IDZ  0x2    |  DATA REGISTER Z   |  8-bit general purpose register, identical to both the X and Y registers.
+    FGS  3->8   |  FLAGS REGISTER    |  8-bit register that holds the state of the cpu and the various flags.
 
 === FLAGS ===
-    Z 0x03  | Zero flag, is set high if last instruction resulted in a zero.
-    E 0x04  | Equals flag, is set high if comparison was equal.
-    C 0x05  | Carry flag, is set high if comparison was greater, or if arithmetic operation resulted in overflow.
-    V 0x06  | Overflow/Underflow flag, is set high if arithmetic operation violated Two's Complement.
+    Z 0x3  | Zero flag, is set high if last instruction resulted in a zero.
+    E 0x4  | Equals flag, is set high if comparison was equal.
+    C 0x5  | Carry flag, is set high if comparison was greater, or if arithmetic operation resulted in overflow.
+    V 0x6  | Overflow/Underflow flag, is set high if arithmetic operation violated Two's Complement.
 
     H 0x07  | Halt flag, if set high the cpu halts, if set low again the cpu continues from where it left off.
-    R 0x08  | The Read flag or Read/Write flag, if low it indicates a read, high indicates a write.
-
+    
 === INTERNAL REGISTERS ===
 
     PROGRAM COUNTER         |  16-bit register which points to the location in memory being read from
     ADDRESS REGISTER        |  16-bit register which is used to hold memory addresses being accessed by instructions
     STACK POITNER           |  8-bit register which points to the last location accessed in the stack
     INSTRUCTION REGISTER    |  8-bit register which holds the opcode of the current instruction being processed
-    BUFFER REGISTER         |  8-bit register which holds the value in memory being processed by the computer
 
 === MEMORY ADDRESSING ===
     0x0000 -> 0x00FF is reserved for the stack.

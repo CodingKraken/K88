@@ -70,7 +70,7 @@ Flags affected: None
 
 POP: Returns data off the top of the stack and decriments stack pointer.
 
-POP opcodes: 0x88 -> 8A (register only)
+POP opcodes: 0x88 -> 0x8A (register only)
 
 Flags affected: None
 

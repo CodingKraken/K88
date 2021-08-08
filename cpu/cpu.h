@@ -81,10 +81,8 @@ struct CPU {
     uint8_t H : 1;
 };
 
-char* InsAsString(uint8_t instruction);
+char* InsAsString(struct Instruction instruction);
 void PrintState(struct CPU* cpu, uint8_t memory[0x10000]);
-
-void PointerStep(struct CPU* cpu, uint8_t[0x10000], uint8_t pointer, int incdec, int display);
 
 struct Instruction Decode(uint8_t opcode);
 void ALU(struct CPU* cpu, uint8_t memory[0x10000], int val);

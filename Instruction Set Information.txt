@@ -7,7 +7,7 @@ Flags affected: Z, C, V
 
 ------------------------------------------------------------------------------------------------
 
-SUB: Takes in a register and either a memory address or another register, and adds the two.
+SUB: Takes in a register and either a memory address or another register, and subtracts one from the other.
 
 SUB opcodes with address mode:  0x10 -> 0x12
 SUB opcodes with register mode: 0x18 -> 0x1A

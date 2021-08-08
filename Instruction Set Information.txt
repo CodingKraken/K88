@@ -47,7 +47,7 @@ CLF: Clear Flag instruction, resets bit in flag to zero.
 
 CLF Opcodes: 0x53 -> 0x57
 
-Flags affected: Z, E, C, V
+Flags affected: Z, E, C
 
 ------------------------------------------------------------------------------------------------
 

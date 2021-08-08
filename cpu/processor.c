@@ -4,10 +4,10 @@
 #include "cpu.h"
 
 /*
-    In a real processor, the ALU or Arithmetic and Logic Unit performs arithmetic operations on given inputs
-    For the sake of simplicity, only addition and subtraction has been implemented. 
-    The result of these operations
-    set the various processor flags, excluding the E (Equals) flag.
+    In processors, an instruction opcode is decoded by the Control Unit, which also sets up the
+    processor to execute said instruction. As it would be rather tedious to fully implement
+    in code the exact inner workings of a CU, we just decode the opcode via some simple bitshifts
+    and return an instruction struct
 */
 
 struct Instruction Decode(uint8_t opcode) {
@@ -19,6 +19,13 @@ struct Instruction Decode(uint8_t opcode) {
 
     return instruction;
 }
+
+/*
+    In a real processor, the ALU or Arithmetic and Logic Unit performs arithmetic operations on given inputs
+    For the sake of simplicity, only addition and subtraction has been implemented. 
+    The result of these operations
+    set the various processor flags, excluding the E (Equals) flag.
+*/
 
 void ALU(struct CPU* cpu, uint8_t memory[0x10000], int val) {
     struct Instruction instruction = Decode(cpu->IR);

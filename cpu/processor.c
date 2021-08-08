@@ -3,21 +3,6 @@
 
 #include "cpu.h"
 
-void PointerStep(struct CPU* cpu, uint8_t memory[0x10000], uint8_t pointer, int incdec, int display) {
-
-    switch(pointer) {
-        case SP: {
-            cpu->SP += incdec;
-            break;
-        }
-        case PC: {
-            cpu->PC += incdec;
-            break;
-        }
-    }
-    if(display) PrintState(cpu, memory);
-}
-
 /*
     In a real processor, the ALU or Arithmetic and Logic Unit performs arithmetic operations on given inputs
     For the sake of simplicity, only addition and subtraction has been implemented. 
@@ -81,6 +66,8 @@ void ExecuteInstruction(struct CPU* cpu, uint8_t memory[0x10000]) {
 
     // Decode
     struct Instruction instruction = Decode(cpu->IR);
+
+    PrintState(cpu, memory);
 
     // Execute
     cpu->PC++;
@@ -238,13 +225,13 @@ void ExecuteInstruction(struct CPU* cpu, uint8_t memory[0x10000]) {
         }
         case NOP: {
             if(instruction.mode == 0b1 && instruction.reg == 0b111) {
-                printf("\nCPU Halted");
+                printf("CPU Halted");
                 cpu->H = 1;
             }
             break;
         }
         default: {
-            printf("\nERROR: Invalid Instruction at %04X", cpu->PC);
+            printf("ERROR: Invalid Instruction at %04X", cpu->PC);
             cpu->H = 1;
             return;
         }
@@ -269,7 +256,6 @@ void ProcessorInit(struct CPU* cpu, uint8_t memory[0x10000]) {
 
 void ProcessorLoop(struct CPU* cpu, uint8_t memory[0x10000]) {
     while(!cpu->H) {
-        PrintState(cpu, memory);
         ExecuteInstruction(cpu, memory);
         cpu->PC++;
     }

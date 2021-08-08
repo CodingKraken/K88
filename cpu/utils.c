@@ -9,9 +9,9 @@
     Readbit reads a bit at a given position in a byte, and ReadSubByte
 */
 
-char* InsAsString(uint8_t instruction) {
+char* InsAsString(struct Instruction instruction) {
     char* INS;
-    switch(instruction) {
+    switch(instruction.ins) {
         case ADD:
             INS = "ADD";
             break;
@@ -57,7 +57,11 @@ char* InsAsString(uint8_t instruction) {
         case RTS: 
             INS = "RTS";
             break;
-        case NOP: 
+        case NOP:
+            if(instruction.mode == 1 && instruction.reg == 0b111) {
+                INS = "HLT";
+                break;
+            }
             INS = "NOP";
             break;
     }
@@ -66,21 +70,25 @@ char* InsAsString(uint8_t instruction) {
 
 void PrintState(struct CPU* cpu, uint8_t memory[0x10000]) {
     // Print Address of the Program Counter and Stack Pointer
-    printf("PC: %04X | ", cpu->PC);
-    printf("SP: %02X | ", cpu->SP);
+    printf("MEM PTRS: PC: %04X | ", cpu->PC);
+    printf("SP: %02X  ", cpu->SP);
 
     // Print the instruction being performed
     struct Instruction instruction = Decode(cpu->IR);
-    printf("OP: %02X | ", cpu->IR);
+    printf("INSTRUCTION: OP: %02X | ", cpu->IR);
 
-    char* INS = InsAsString(instruction.ins);
-    printf("INS: %-3s   ", INS);
+    char* INS = InsAsString(instruction);
+    printf("INS: %-3s | ", INS);
+    
+    char *mode = "ADR";
+    if(instruction.mode == 1) mode = "REG";
 
-    printf("VAL: %02X   ", memory[cpu->PC]);
+    printf("MODE: %s | ", mode);
+    printf("REG: %01X  ", instruction.reg);
 
     //Print the values of the various data registers
     printf("REGISTERS: ");
-    printf("IDX=%02X  IDY=%02X  IDZ=%02X   ", cpu->IDX, cpu->IDY, cpu->IDZ);
+    printf("IDX=%02X  IDY=%02X  IDZ=%02X  ", cpu->IDX, cpu->IDY, cpu->IDZ);
 
     //Print the state of the various flags
     printf("FLAGS: Z=%01X  E=%01X  C=%01X  V=%01X\n\n", cpu->Z, cpu->E, cpu->C, cpu->V);

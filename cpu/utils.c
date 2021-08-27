@@ -3,12 +3,6 @@
 
 #include "cpu.h"
 
-/*
-    ReadBit and ReadSubByte are separate from the other Read/Write instructions in that
-    they don't directly access memory or the registers.
-    Readbit reads a bit at a given position in a byte, and ReadSubByte
-*/
-
 char* InsAsString(struct Instruction instruction) {
     char* INS;
     switch(instruction.ins) {
